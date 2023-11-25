@@ -12,6 +12,6 @@ export const signup = async (req, resp,next) => {
     } catch (error) {
         // resp.status(500).json(error.message);
         // next(error);
-        next(errorHandler(600,"Custom Error for Duplicate"))
+        next(errorHandler(600,"Self made Error"))
     }
 }

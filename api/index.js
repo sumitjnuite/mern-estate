@@ -28,7 +28,7 @@ app.use((err,req,resp,next)=>{
     const message = err.message || "Internal Server Error";
 
     return resp.status(statusCode).json({
-        success:"false",
+        success:false,
         statusCode,
         message,
     })      // key aur value same hone pr kewal key bhej skte h
