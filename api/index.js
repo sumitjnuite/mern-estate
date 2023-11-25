@@ -20,3 +20,16 @@ app.listen(4000,()=>{
 
 app.use('/api/user',userRouter);
 app.use('/api/auth',authRouter);
+
+
+// middleware for error---
+app.use((err,req,resp,next)=>{
+    const statusCode = err.statusCode || 500;
+    const message = err.message || "Internal Server Error";
+
+    return resp.status(statusCode).json({
+        success:"false",
+        statusCode,
+        message,
+    })      // key aur value same hone pr kewal key bhej skte h
+})
