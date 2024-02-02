@@ -36,9 +36,22 @@ const userSlice = createSlice({
         updateUserFailed: (state,action) =>{
             state.error = action.payload;
             state.loading = false;
+        },
+
+        deleteUserStart: (state,action) =>{
+            state.loading = true;
+        },
+        deleteUserSuccess: (state,action) =>{
+            state.currentUser = null;
+            state.loading = false;
+            state.error = null;
+        },
+        deleteUserFailed: (state,action) =>{
+            state.error = action.payload;
+            state.loading = false;
         }
     }
 })
 
-export const { signInStart, signInSuccess, signInFailed,updateUserStart,updateUserSuccess,updateUserFailed } = userSlice.actions;
+export const { signInStart, signInSuccess, signInFailed,updateUserStart,updateUserSuccess,updateUserFailed,deleteUserStart,deleteUserSuccess,deleteUserFailed } = userSlice.actions;
 export default userSlice.reducer;  // jisko default me export krte hain uska name change kr skte hain jahan import krte hain
