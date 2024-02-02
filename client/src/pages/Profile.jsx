@@ -11,6 +11,9 @@ import {
   deleteUserFailed,
   deleteUserStart,
   deleteUserSuccess,
+  signOutFailed,
+  signOutStart,
+  signOutSuccess,
   updateUserFailed,
   updateUserStart,
   updateUserSuccess,
@@ -101,7 +104,7 @@ const Profile = () => {
         method:'DELETE'
       });
       const data = await result.json();
-      
+
       if(data.success === false){
         disptach(deleteUserFailed(data.message));
         return;
@@ -112,6 +115,23 @@ const Profile = () => {
       disptach(deleteUserFailed(error.message));
     }
   };
+
+  const handleSignout =async()=>{
+    try {
+      disptach(signOutStart());
+      const result = await fetch('/api/auth/signout');
+      const data = await result.json();
+
+      if(data.success === false){
+        disptach(signOutFailed(data.message));
+        return;
+      }
+      disptach(signOutSuccess(data));
+
+    } catch (error) {
+      disptach(signOutFailed(error.message));
+    }
+  }
 
   return (
     <div className="p-3 max-w-lg mx-auto">
@@ -175,7 +195,7 @@ const Profile = () => {
       </form>
       <div className="flex justify-between mt-5">
         <span className="text-red-700 cursor-pointer" onClick={handleDelete}>Delete account</span>
-        <span className="text-red-700 cursor-pointer">Sign out</span>
+        <span className="text-red-700 cursor-pointer" onClick={handleSignout}>Sign out</span>
       </div>
       <p className='text-red-700 mt-5'>{error ? error :''}</p>
       <p className='text-green-700 mt-5'>

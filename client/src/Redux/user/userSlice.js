@@ -25,33 +25,60 @@ const userSlice = createSlice({
             state.loading = false;
         },
 
-        updateUserStart: (state,action) =>{
+        updateUserStart: (state, action) => {
             state.loading = true;
         },
-        updateUserSuccess: (state,action) =>{
+        updateUserSuccess: (state, action) => {
             state.currentUser = action.payload;
             state.loading = false;
             state.error = null;
         },
-        updateUserFailed: (state,action) =>{
+        updateUserFailed: (state, action) => {
             state.error = action.payload;
             state.loading = false;
         },
 
-        deleteUserStart: (state,action) =>{
+        deleteUserStart: (state, action) => {
             state.loading = true;
         },
-        deleteUserSuccess: (state,action) =>{
+        deleteUserSuccess: (state, action) => {
             state.currentUser = null;
             state.loading = false;
             state.error = null;
         },
-        deleteUserFailed: (state,action) =>{
+        deleteUserFailed: (state, action) => {
             state.error = action.payload;
             state.loading = false;
-        }
+        },
+        signOutStart: (state) => {
+            state.loading = true;
+        },
+        signOutSuccess: (state, action) => {
+            state.currentUser = null;
+            state.loading = false;
+            state.error = null;
+        },
+        signOutFailed: (state, action) => {
+            state.error = action.payload;
+            state.loading = false;
+        },
+
+
     }
 })
 
-export const { signInStart, signInSuccess, signInFailed,updateUserStart,updateUserSuccess,updateUserFailed,deleteUserStart,deleteUserSuccess,deleteUserFailed } = userSlice.actions;
+export const {
+    signInStart,
+    signInSuccess,
+    signInFailed,
+    updateUserStart,
+    updateUserSuccess,
+    updateUserFailed,
+    deleteUserStart,
+    deleteUserSuccess,
+    deleteUserFailed,
+    signOutStart,
+    signOutSuccess,
+    signOutFailed,
+} = userSlice.actions;
 export default userSlice.reducer;  // jisko default me export krte hain uska name change kr skte hain jahan import krte hain
