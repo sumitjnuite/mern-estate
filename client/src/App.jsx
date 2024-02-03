@@ -5,6 +5,7 @@ import Signup from "./pages/Signup";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
+import CreateListing from "./pages/CreateListing";
 import Header from "./components/Header";
 import Protected from "./components/Protected";
 
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route element={<Protected />}>
           <Route path="/profile" element={<Profile />} />
+          <Route path="/create-listing" element={<CreateListing/>} />
         </Route>
       </Routes>
     </BrowserRouter>
