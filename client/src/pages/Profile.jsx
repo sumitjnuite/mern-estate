@@ -41,7 +41,7 @@ const Profile = () => {
   // console.log(fileUploadError);
   useEffect(() => {
     if (file) {
-      handleFileUpload();
+      handleFileUpload(file);
     }
   }, [file]);
   // console.log(file)
