@@ -9,6 +9,7 @@ import CreateListing from "./pages/CreateListing";
 import Header from "./components/Header";
 import Protected from "./components/Protected";
 import UpdateListing from "./pages/UpdateListing";
+import Listing from "./pages/Listing";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/sign-in" element={<Signin />} />
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/about" element={<About />} />
+        <Route path="/listing/:listingId" element={<Listing />} />
         <Route element={<Protected />}>
           <Route path="/profile" element={<Profile />} />
           <Route path="/create-listing" element={<CreateListing/>} />
